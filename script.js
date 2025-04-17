@@ -43,8 +43,11 @@ document.getElementById("postForm").addEventListener("submit", (e) => {
     body: JSON.stringify({ title, body }),
   })
     .then((response) => response.json())
-    .then((data) => {
-      displayOutput(`<p class='success'>POST successful: ID ${data.id}</p>`);
+    .then(() => {
+      displayOutput(`<p class='success'>✅ POST successful! Title: <strong>${title}</strong></p>`);
+      // Clear form fields
+      document.getElementById("postTitle").value = "";
+      document.getElementById("postBody").value = "";
     })
     .catch((error) => {
       displayOutput(`<p class='error'>POST error: ${error.message}</p>`);
@@ -63,8 +66,11 @@ document.getElementById("putForm").addEventListener("submit", (e) => {
   xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
   xhr.onload = () => {
     if (xhr.status >= 200 && xhr.status < 300) {
-      const data = JSON.parse(xhr.responseText);
-      displayOutput(`<p class='success'>PUT successful:<h3>${data.title}</h3><p>${data.body}</p></p>`);
+      displayOutput(`<p class='success'>✅ PUT successful! Updated Title: <strong>${title}</strong></p>`);
+      // Clear form fields
+      document.getElementById("putId").value = "";
+      document.getElementById("putTitle").value = "";
+      document.getElementById("putBody").value = "";
     } else {
       displayOutput(`<p class='error'>PUT error: ${xhr.statusText}</p>`);
     }
@@ -85,7 +91,8 @@ document.getElementById("deleteForm").addEventListener("submit", (e) => {
   })
     .then((response) => {
       if (response.ok) {
-        displayOutput(`<p class='success'>Post with ID ${id} has been deleted.</p>`);
+        displayOutput(`<p class='success'>🗑️ Post with ID <strong>${id}</strong> has been deleted.</p>`);
+        document.getElementById("deleteId").value = "";
       } else {
         throw new Error("Failed to delete post");
       }
