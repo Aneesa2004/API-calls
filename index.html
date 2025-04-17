@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab 10: API Calls</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>API Interaction Lab</h1>
+
+    <div class="button-group">
+      <button id="fetchBtn">Fetch Data with fetch()</button>
+      <button id="xhrBtn">Fetch Data with XHR</button>
+    </div>
+
+    <div id="output" class="output"></div>
+    <div id="error" class="error"></div>
+
+    <form id="postForm">
+      <h2>Create a New Post (POST)</h2>
+      <input type="text" id="postTitle" placeholder="Post Title" required />
+      <textarea id="postBody" placeholder="Post Body" required></textarea>
+      <button type="submit">Send POST</button>
+    </form>
+
+    <form id="putForm">
+      <h2>Update a Post (PUT)</h2>
+      <input type="number" id="putId" placeholder="Post ID" required />
+      <input type="text" id="putTitle" placeholder="New Title" required />
+      <textarea id="putBody" placeholder="New Body" required></textarea>
+      <button type="submit">Send PUT</button>
+    </form>
+
+    <form id="deleteForm">
+      <h2>Delete a Post</h2>
+      <input type="number" id="deleteId" placeholder="Post ID to delete" required />
+      <button type="submit">Delete Post</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
